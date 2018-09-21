@@ -1,5 +1,5 @@
-const API_KEY='b6907d289e10d714a6e88b30761fae22';
-const API_URL=`https://samples.openweathermap.org/data/2.5/forecast?appid=${API_KEY}`;
+const API_KEY='d59015145f737183141cd13dc9f701bb';
+const API_URL=`http://api.openweathermap.org/data/2.5/forecast?appid=${API_KEY}`;
 import axios from 'axios';
 
 export const FATCH_WATHERE='FATCH_WATHERE';
