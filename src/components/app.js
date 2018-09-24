@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import SearchBox from '../container/search_box'
+import SearchBox from '../container/search_box';
+import WheatherList from '../container/wheatherlist'
 
 export default class App extends Component {
   render() {
@@ -7,6 +8,7 @@ export default class App extends Component {
       <div>
 
         <SearchBox/>
+        <WheatherList />
       </div>
     );
   }
