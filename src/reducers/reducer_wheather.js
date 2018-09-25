@@ -5,9 +5,19 @@ export default function(state=[],action){
     switch(action.type){
         
             case FATCH_WATHERE:
-             console.log(action.payload);
+             console.log(action.payload.data);
            // return state.concat([action.payload.data]);
-            return [action.payload.data,...state];
+           //return [Object.assign(action.payload.data,state)];
+           const temp =[action.payload.data,...state];
+
+           const length= temp.length;
+           console.log(length);
+           if(length==3){
+                 
+            temp.splice(-1,1)
+           }
+
+            return temp;
             //both the above line is same 
 
     }

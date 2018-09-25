@@ -1,12 +1,29 @@
 import React,{Component} from 'react';
 import { connect } from 'react-redux';
+import Chart from '../components/chart';
+import GoogleMap from '../components/googlemapcom';
+
 
 class WheatherList extends Component{
-
+    
     renderWhather(cityData){
-        console.log('request:',cityData.city.name);
+      //  console.log('request:',cityData.city.name);
+      const name=cityData.city.name;
+      const temps=cityData.list.map(tepmraterdat=>tepmraterdat.main.temp);
+      const pressures=cityData.list.map(tepmraterdat=>tepmraterdat.main.pressure);
+      const humiditys=cityData.list.map(tepmraterdat=>tepmraterdat.main.humidity);
+      const {lat,lon}=cityData.city.coord;
+     // console.log(temps);
         return(
-              <tr  key={cityData.city.id} ><td >{cityData.city.name}</td></tr>
+              <tr  key={name} >
+              <td  >{name}<GoogleMap  lat={lat}  lon={lon}  /></td>
+              <td >
+            <Chart data={temps}   color='red' unite='K' />
+                    </td>
+              <td> <Chart data={pressures}  color='orange'  unite='hpa'/> </td>
+              <td><Chart data={humiditys}  color="blue" unite='%' /> </td>
+              
+              </tr>
         )
 
     }
@@ -20,10 +37,10 @@ class WheatherList extends Component{
             return(
                <table className="table table-hover">
                    <thead>
-                       <tr><th>city</th></tr>
-                       <tr><th>temp</th></tr>
-                       <tr><th>preser</th></tr>
-                       <tr><th>humidity</th></tr>
+                   <tr><th>city</th>
+                       <th>temp</th>
+                       <th>preser</th>
+                       <th>humidity</th></tr>
                    </thead>
                    <tbody>
                    {this.props.weather.map(this.renderWhather)}
@@ -37,8 +54,8 @@ class WheatherList extends Component{
     }
 }
 /*function mapStateToProps(state){
-    console.log('amamamamamam'+state.wheather);
-     return {wheather:state.wheather}
+    console.log('amamamamamam'+state.weather);
+     return {weather:state.weather}
 
 }*/
 
